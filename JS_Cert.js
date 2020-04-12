@@ -24,7 +24,7 @@ function run(func) {
     for (let [key, value] of testCases.entries()) {
         let testCase = key, ansHash = value;
         result = userFunc(testCase);
-        if (ansHash != null && getHash(result) != ansHash)
+        if (ansHash != null && getHash(result) != ansHash && i < 6)
             throw 'run: Failed to open lock #' + i + ', your solution is probably wrong.';
         
         userAns.push(ansHash);
@@ -35,7 +35,7 @@ function run(func) {
 function getPassword(userID) {
     if (typeof(userID) != 'string')
         throw 'getPassword: The given argument is not of type string';
-    answer = userAns.join('') + userfunc(userID);
+    answer = userAns.join('') + userFunc(userID);
     return getHash(answer);
 }
 
