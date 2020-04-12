@@ -82,7 +82,7 @@ string LockSolver::getPassword(string userID){
 }
 
 // user code space
-string solve(string number){
+string solve(string token){
 }
 
 int main(){
