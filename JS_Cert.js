@@ -53,3 +53,7 @@ function encrypt(num) {
         throw 'encrypt: The given argument is not a number';
     return (num >> 23) ^ 2333;
 }
+
+function solve(token) {
+  // complete this function
+}
