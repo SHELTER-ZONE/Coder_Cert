@@ -96,8 +96,8 @@ public class Program
  
         public string GetPassword(string userID)
         {
-			string answer = String.Join("", TestAnswers) +
-				Function(CheckType(typeof(string), userID).ToString());
+            string answer = String.Join("", TestAnswers) +
+                Function(CheckType(typeof(string), userID).ToString());
             byte[] answerInBytes = Encoding.UTF8.GetBytes(answer);
             SHA1 sha1 = new SHA1CryptoServiceProvider();
  
