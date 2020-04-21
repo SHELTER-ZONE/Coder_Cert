@@ -96,7 +96,8 @@ public class Program
  
         public string GetPassword(string userID)
         {
-            string answer = String.Join("", TestAnswers) + Function(CheckType(typeof(string), userID).ToString());
+			string answer = String.Join("", TestAnswers) +
+				Function(CheckType(typeof(string), userID).ToString());
             byte[] answerInBytes = Encoding.UTF8.GetBytes(answer);
             SHA1 sha1 = new SHA1CryptoServiceProvider();
  
@@ -122,7 +123,6 @@ public class Program
         // Complete this method.
         // REMEMBER! You need C# 8.0 to have this script running without errors.
         // You also need to install System.Text.Json from NuGet to have this script running without errors as well.
-       
     }
    
     public static void Main(string[] args)
