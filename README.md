@@ -35,3 +35,4 @@ run方法需要傳入你寫出來的函數物件（不要呼叫！），前5個�
 | JavaScript | ES6 |
 | C++ | 11 |
 | C# | 8 (.NET Core) |
+| Kotlin | 1.3 |
