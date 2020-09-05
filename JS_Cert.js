@@ -1,10 +1,8 @@
 // Node.js compatibility
-if (!atob){
-  try {
-    const atob = require('atob');
-  } catch(err) {
-    console.error(err);
-  }
+try {
+  const atob = require('atob');
+} catch(err) {
+  console.error(err);
 }
 
 var testCases = new Map();
