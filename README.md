@@ -38,3 +38,4 @@ LockSolver這個類別當中存有開鎖的內部邏輯，你必須將LockSolver
 | C++ | 11 |
 | C# | 8 (.NET Core) |
 | Kotlin | 1.3 |
+### ***JS認證需在Node.js控制台輸入npm install atob***
