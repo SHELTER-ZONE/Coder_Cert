@@ -10,7 +10,12 @@ if (typeof atob === 'undefined' || !atob){
 var testCases = new Map();
 
 var userAns = [];
-var userFunc = null;
+
+function encrypt(num) {
+    if (typeof(num) != 'number')
+        throw 'encrypt: The given argument is not a number';
+    return (num >> 23) ^ 2333;
+}
 
 const getHash=function(M,N=!1,T=1337){var D,z,O=void 0===T?2166136261:T;for(D=0,z=M.length;D<z;D++)O^=M.charCodeAt(D),O+=(O<<1)+(O<<4)+(O<<7)+(O<<8)+(O<<24);
     return N?("0000000"+(O>>>0).toString(16)).substr(-8):O>>>0},getTestCases=()=>{var M=atob("MDMwMzE1MTM0MTMwOS00NjAwNy8xMjEzNDk4NTMxMDM0NTAzMTQvNDM0MTM0ODk"+
@@ -20,7 +25,11 @@ const getHash=function(M,N=!1,T=1337){var D,z,O=void 0===T?2166136261:T;for(D=0,
     "zc2MTQvMTY3NjE2ODcyNC8yMjg2MDcyOTQ5LzkyMzgwMjc1OS80MjU3OTM5OTQ3LzQyOTE0OTUxODU=").split("/");
 if(M.length!=N.length)throw"Error: Cannot load testcase datasets.";for(var T=0;T<M.length;)testCases.set(M[T],N[T]),T++};
 
-function run(func) {
+var LockSolver = function() {
+    this.userFunc = null;
+}
+
+LockSolver.prototype.run = function(func) {
     var sampleAns = func('12345');
     if(typeof(sampleAns) != "string")
         throw 'run: Return value of given function is not type of string'
@@ -28,11 +37,11 @@ function run(func) {
         throw 'run: Failed to pass sample testcase. Your answer is: ' + sampleAns + ' instead of 2353';
 
     getTestCases();
-    userFunc = func;
+    this.userFunc = func;
     i = 1;
     for (let [key, value] of testCases.entries()) {
         let testCase = key, ansHash = value;
-        result = userFunc(testCase);
+        result = this.userFunc(testCase);
         if (ansHash != null && getHash(result) != ansHash && i < 6)
             throw 'run: Failed to open lock #' + i + ', your solution is probably wrong.';
         
@@ -41,17 +50,11 @@ function run(func) {
     }
 }
 
-function getPassword(userID) {
+LockSolver.prototype.getPassword = function(userID) {
     if (typeof(userID) != 'string')
         throw 'getPassword: The given argument is not of type string';
-    answer = userAns.join('') + userFunc(userID);
+    answer = userAns.join('') + this.userFunc(userID);
     return getHash(answer);
-}
-
-function encrypt(num) {
-    if (typeof(num) != 'number')
-        throw 'encrypt: The given argument is not a number';
-    return (num >> 23) ^ 2333;
 }
 
 function solve(token) {
