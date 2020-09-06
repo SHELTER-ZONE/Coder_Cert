@@ -1,5 +1,10 @@
 // Node.js compatibility
-const atob = require('atob');
+var atob = undefined
+try {
+    atob = require('atob');
+} catch(err) {
+    console.error(err);
+}
 
 var testCases = new Map();
 
