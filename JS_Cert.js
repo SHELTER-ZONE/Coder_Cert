@@ -1,5 +1,5 @@
 // Node.js compatibility
-if (!atob){
+if (typeof atob === 'undefined' || !atob){
   try {
     const atob = require('atob');
   } catch(err) {
