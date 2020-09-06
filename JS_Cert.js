@@ -1,9 +1,9 @@
 // Node.js compatibility
 if (typeof atob === 'undefined' || !atob){
   try {
-    const atob = require('atob');
+    var atob = require('atob');
   } catch(err) {
-    console.error(err);
+    var atob = s => Buffer.from(s, 'base64').toString();
   }
 }
 
