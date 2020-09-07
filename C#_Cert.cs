@@ -70,7 +70,7 @@ public class Program
             TestCaseDictionary = JsonSerializer.Deserialize<Dictionary<string, string>>(Base64DecodedString);
         }
  
-        public void run(Func<string, string> function)
+        public void Run(Func<string, string> function)
         {
             Function = function;
             var sampleTest = Function("12345");
@@ -94,7 +94,7 @@ public class Program
             }
         }
  
-        public string getPassword(string userID)
+        public string GetPassword(string userID)
         {
             string answer = String.Join("", TestAnswers) +
                 Function(CheckType(typeof(string), userID).ToString());
@@ -115,10 +115,10 @@ public class Program
         }
     }
    
-    public static long encrypt(long number) =>
+    public static long Encrypt(long number) =>
         Convert.ToInt64(CheckType(typeof(long), number)) >> 23 ^ 2333;
    
-    static string solve(string token)
+    static string Solve(string token)
     {
         // Complete this method.
         // REMEMBER! You need C# 8.0 to have this script running without errors.
