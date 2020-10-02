@@ -29,7 +29,7 @@ class LockSolver {
     private var testCases: Array<Pair<String, String?>> =
         deserialize(decode(decompress(decode(compressedString))))
 
-    fun run(function: (String) -> String) {
+    fun exec(function: (String) -> String) {
         _function = function
         val sampleTest = _function("12345")
 
